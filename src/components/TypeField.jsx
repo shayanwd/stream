@@ -59,7 +59,7 @@ const TypeField = ({
 
   const filteredButtons = existingButtons.filter((button) => {
     if (searchMov)
-      return button?.name.toLowerCase().includes(inputValue?.toLowerCase());
+      return button?.name?.toLowerCase().includes(inputValue?.toLowerCase());
     else return button.toLowerCase().includes(inputValue?.toLowerCase());
   });
 
@@ -106,14 +106,15 @@ const TypeField = ({
                   if (selected) {
                     selectedMovies.push(lable);
                     setSelectedMovies([...selectedMovies]);
-                    onSelectionChange(selectedMovies);
+                    if(onSelectionChange) onSelectionChange(selectedMovies);
                   }
                   if (!selected) {
                     const temp = selectedMovies.filter((it) => {
                       return it != lable;
                     });
-                    onSelectionChange(temp);
+                  
                     setSelectedMovies(temp);
+                    if(onSelectionChange) onSelectionChange(temp);
                   }
                 }}
               />
@@ -130,17 +131,17 @@ const TypeField = ({
                       } else {
                         selectedButtons.push(lable);
                         setSelectedButtons([...selectedButtons]);
-                        onSelectionChange(selectedButtons);
+                       if(onSelectionChange) onSelectionChange(selectedButtons);
                       }
                     } else {
                       selectedButtons.push(lable);
                       setSelectedButtons([...selectedButtons]);
-                      onSelectionChange(selectedButtons);
+                      if(onSelectionChange) onSelectionChange(selectedButtons);
                     }
                   }
                   if (!selected) {
                     const temp = selectedButtons.filter((it) => it != lable);
-                    onSelectionChange(temp);
+                    if(onSelectionChange)  onSelectionChange(temp);
                     setSelectedButtons(temp);
                   }
                 }}
