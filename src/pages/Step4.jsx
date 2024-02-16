@@ -124,11 +124,13 @@ const Step4 = () => {
           >
             back
           </NavLink>
+          <div className={enableNextButton ? "" : 'disable-next'}>
           <SiteBtn
             buttonLabel="Next"
             showArrow={true}
             buttonLink={enableNextButton ? "/step5" : undefined}
           />
+          </div>
         </div>
       </div>
     </>

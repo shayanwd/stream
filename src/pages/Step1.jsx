@@ -15,6 +15,7 @@ const Step1 = () => {
   scrollToTop();
 
   const initialButtons = ["TV Show", "Movie", "either"];
+  const [showNext, setShowNext] = useState()
 
   const [buttons, setButtons] = useState(() => {
     const storedButtons = localStorage.getItem("shows");
@@ -72,11 +73,14 @@ const Step1 = () => {
           >
             back
           </NavLink>
+          <div className={selectedButton != "" ? "  " : 'disable-next'}>
           <SiteBtn
+          
             buttonLabel="Next"
             showArrow={true}
             buttonLink={selectedButton != "" ? "/step2" : undefined}
           />
+          </div>
         </div>
       </div>
     </>

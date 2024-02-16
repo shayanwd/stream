@@ -2,6 +2,10 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 const MoodModal = ({ closeModal }) => {
+
+    function refreshPage() {
+        window.location.reload();
+      }
     return (
         <div className="main-modal-container">
             <div onClick={closeModal} className="modal-outer"></div>
@@ -16,7 +20,7 @@ const MoodModal = ({ closeModal }) => {
                     <NavLink className='w-full text-center' to="/step1">
                 <button type="button" class="site-btn going-btn mx-auto  min-w-[210px] text-center w-fit"><span>Edit My Mood</span></button>
                 </NavLink>
-                    <button type="button" class="site-btn going-btn mx-auto min-w-[210px]   text-center w-fit"><span>Generate New Results</span></button>
+                    <button onClick={()=>{refreshPage()}} type="button" class="site-btn going-btn mx-auto min-w-[210px]   text-center w-fit"><span>Generate New Results</span></button>
 
                 </div>
             </div>

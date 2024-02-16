@@ -45,15 +45,21 @@ const Step2 = () => {
 
   useEffect(() => {
     localStorage.setItem("movieGenresButtons", JSON.stringify(buttons));
+  
   }, [buttons]);
+  
+
 
   const handleAddButtonClick = (newButtonLabel) => {
     setButtons((prevButtons) => [newButtonLabel,...prevButtons ]);
   };
   //NEW UPDATES
   const [enableNextButton, setEnableNextButton] = useState(false);
+  const [limitText, setLimitText] = useState(false)
+
   return (
     <>
+    <p className={`pop-text ${limitText ? 'show-pop' : ''}`}>The maximum genres you can select is 4</p>
       <StepHeaderBar
         stepDesc="Analyzing your current mood…"
         stepProgress="40%"
@@ -68,7 +74,10 @@ const Step2 = () => {
           existingButtons={buttons}
           limit={4}
           onLimitReached={()=>{
-            alert('Limit Reached')
+            setLimitText(true)
+            setTimeout(() => {
+              setLimitText(false);
+          }, 5000);
           }}
           onSelectionChange={(items) => {
             setEnableNextButton(items.length > 0);
@@ -83,11 +92,13 @@ const Step2 = () => {
           >
             back
           </NavLink>
+          <div className={enableNextButton ? "" : 'disable-next'}>
           <SiteBtn
             buttonLabel={"Next"}
             showArrow={true}
             buttonLink={enableNextButton ? "/step3" : undefined}
           />
+          </div>
         </div>
       </div>
     </>

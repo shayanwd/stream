@@ -1,5 +1,5 @@
 import React from 'react'
-import Dislike from '../assets/images/result-react-ico1.svg'
+import Dislike from '../assets/images/dislike.png'
 import Like from '../assets/images/result-react-ico2.svg'
 import ReactIcon from '../assets/images/result-react-ico3.svg'
 import TrailorModal from './TrailorModal'
