@@ -25,7 +25,9 @@ const Step2 = () => {
     "Action Comedy",
     "Animated",
     "Cartoon",
+    "Sitcom",
     "Comedy",
+    "Horror",
     "Dark Comedies",
     "Political Comedies",
     "Romantic Comedies (Rom Com)",
@@ -33,10 +35,29 @@ const Step2 = () => {
     "Drama",
     "Political Drama",
     "Military Drama",
-    "Romantic",
+    "Crime",
     "Spy",
     "Reality",
-  ];
+    "Thrillers",
+    "Documentary",
+    "True Crime",
+    "Superhero",
+    "Mystery",
+    "Romance",
+    "Satire",
+    "Anime",
+    "Sports",
+    "British",
+    "Classic",
+    "Food & Travel",
+    "Foreign",
+    "Gangster",
+    "Family",
+    "Kids TV",
+    "Musicals",
+    "Stand-up Comedy",
+    "Westerns"
+];
 
   const [buttons, setButtons] = useState(() => {
     const storedButtons = localStorage.getItem("movieGenresButtons");
@@ -59,7 +80,7 @@ const Step2 = () => {
 
   return (
     <>
-    <p className={`pop-text ${limitText ? 'show-pop' : ''}`}>The maximum genres you can select is 4</p>
+    
       <StepHeaderBar
         stepDesc="Analyzing your current mood…"
         stepProgress="40%"
@@ -86,6 +107,7 @@ const Step2 = () => {
         />
 
         <div className="flex justify-end items-center gap-8 mt-12 steps-btn-holder">
+          <p className={`pop-text ${limitText ? 'show-pop' : ''}`}>The maximum genres you can select is 4</p>
           <NavLink
             to="/step1"
             className="text-[#8A8A8A] text-[15px] font-[700] nunito"

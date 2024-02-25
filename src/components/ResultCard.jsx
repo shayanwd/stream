@@ -1,13 +1,13 @@
 import React from 'react'
 import Dislike from '../assets/images/dislike.png'
 import Like from '../assets/images/result-react-ico2.svg'
-import ReactIcon from '../assets/images/result-react-ico3.svg'
+import ReactIcon from '../assets/images/thin-plus.svg'
 import TrailorModal from './TrailorModal'
 
 
 import DislikeAct from '../assets/images/dislike-act.svg'
 import LikeAct from '../assets/images/like-act.svg'
-import ReactIconAct from '../assets/images/skip-act.svg'
+import ReactIconAct from '../assets/images/added.svg'
 import { useState } from 'react'
 import { useCallback } from "react";
 
@@ -88,7 +88,7 @@ const ResultCard = ({ ResultImg, ResultTitle, WhereToWhatch, About }) => {
                                     <img src={ReactIcon} alt='' />
                                     <img src={ReactIconAct} alt='' />
                                 </div>
-                                <p>Skip</p>
+                                <p>Watchlist</p>
                             </button>
                         </div>
 
