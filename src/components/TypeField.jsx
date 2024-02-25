@@ -26,22 +26,23 @@ const TypeField = ({
       const isInputInFilteredButtons =
         existingButtons.filter((button) => {
           if (searchMov)
-            return button?.name
-              .toLowerCase()
+            return button?.name?.toLowerCase()
               .includes(inputValue?.toLowerCase());
-          else return button.toLowerCase().includes(inputValue?.toLowerCase());
+          else return button?.toLowerCase().includes(inputValue?.toLowerCase());
         }).length > 0;
 
       if (!isInputInFilteredButtons) {
         if (searchMov) {
           onAddButtonClick({ name: inputValue, image: Poster });
           selectedMovies.push(inputValue);
+          onSelectionChange(selectedMovies)
           setSelectedMovies([...selectedMovies]);
         } else {
           if (limit) {
             if (selectedButtons.length < limit) {
-              onAddButtonClick({ name: inputValue, image: Poster });
+              onAddButtonClick(inputValue);
               selectedButtons.push(inputValue);
+              onSelectionChange(selectedButtons)
               setSelectedButtons([...selectedButtons]);
             } else {
               onLimitReached();
@@ -49,6 +50,7 @@ const TypeField = ({
           } else {
             onAddButtonClick(inputValue);
             selectedButtons.push(inputValue);
+            onSelectionChange(selectedButtons)
             setSelectedButtons([...selectedButtons]);
           }
         }
@@ -60,7 +62,11 @@ const TypeField = ({
   const filteredButtons = existingButtons.filter((button) => {
     if (searchMov)
       return button?.name?.toLowerCase().includes(inputValue?.toLowerCase());
-    else return button.toLowerCase().includes(inputValue?.toLowerCase());
+    else{
+ 
+     return button?.toLowerCase().includes(inputValue?.toLowerCase());
+    
+    }
   });
 
   return (

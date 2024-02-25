@@ -16,15 +16,16 @@ const MovieCard = ({ CardImg, CardText, buttonLabel, disabledBtn,onSelected,sele
   const handleCheckboxChange = () => {
     const newCheckedState = !isChecked;
     setIsChecked(newCheckedState);
-    if (onSelected) onSelected(CardText,newCheckedState);
+    // if (onSelected) onSelected(CardText,newCheckedState);
     // Store the updated state in local storage
     localStorage.setItem(buttonLabel, JSON.stringify(newCheckedState));
   };
 
-  // useEffect(() => {
-  //   setIsChecked(selected);
 
-  // }, [selected]);
+  useEffect(() => {
+    if (onSelected) onSelected(CardText,isChecked);
+
+  }, [isChecked]);
 
   return (
     <div className="movie-card-btn" >

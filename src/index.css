@@ -9,6 +9,11 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    position: relative;
+}
+
+.page-wrapper {
+    position: relative;
 }
 
 code {
@@ -3727,7 +3732,7 @@ header {
 }
 
 .result-action-btn {
-    display: flex;
+    display: grid;
     border-radius: 10px;
     background: #303030;
     padding: 10px 30px;
@@ -3735,6 +3740,7 @@ header {
     margin-bottom: 20px;
     margin-top: 20px;
     width: fit-content;
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .result-action-btn button {
@@ -3934,7 +3940,7 @@ header {
     width: 100%;
     background: rgba(32, 32, 32, 0.50);
     backdrop-filter: blur(2px);
-    padding: 10px 30px;
+    padding: 10px 15px;
     z-index: 9;
 }
 
@@ -3948,7 +3954,7 @@ header {
     background: #202020;
     max-width: 500px;
     width: 100%;
-    padding: 30px;
+    padding: 25px;
     z-index: 99;
 }
 
@@ -4018,7 +4024,7 @@ header {
 }
 
 .share-options-modal {
-    position: absolute;
+    position: fixed;
     bottom: -50px;
     text-align: center;
     width: 100%;
@@ -4094,7 +4100,6 @@ header {
     list-style: none;
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
     gap: 5px;
     color: white;
     font-family: 'Nunito', sans-serif;
@@ -4152,6 +4157,10 @@ header {
     /* background-color: red; */
 }
 
+header {
+    z-index: 999;
+}
+
 .select-btn-holder.step-5 {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -4172,7 +4181,7 @@ header {
 }
 
 .pop-text {
-    position: absolute;
+    position: fixed;
     width: fit-content;
     right: 0;
     left: 0;
@@ -4195,6 +4204,24 @@ header {
     transition: 0.3s;
 }
 
+.selected-will-card p {
+    color: #00bdff !important;
+}
+
+
+/* .modal-found-content {
+    margin-top: auto !important;
+    margin-bottom: auto !important;
+} */
+
+.found-modal-container {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    max-height: 100vh !important;
+    height: 100% !important;
+    /* flex-direction: column; */
+}
+
 @media only screen and (min-width: 700px) {
     .steps-btn-holder {
         position: sticky;
@@ -4214,15 +4241,14 @@ header {
         display: none !important;
     }
     .pop-text {
-        font-size: 14px;
-    }
-    .pop-text {
+        font-size: 10px;
+        position: absolute;
         top: 0;
         height: fit-content;
     }
     .show-pop {
         opacity: 1;
-        top: 20px;
+        top: 4px;
         transition: 0.3s;
     }
     .select-btn-holder.step-5 {
@@ -4256,9 +4282,10 @@ header {
         display: block;
     }
     .main-book-mark {
-        position: absolute;
+        position: inherit;
         bottom: 15px;
         left: 15px;
+        margin: 30px auto 0 auto;
         width: calc(100% - 30px);
     }
     .site-btn.show-m {
@@ -4270,7 +4297,7 @@ header {
         width: 100% !important;
         align-items: center !important;
         justify-content: space-between !important;
-        padding: 20px 15px;
+        padding: 25px 15px;
         background-color: rgba(0, 0, 0, 0.648);
         backdrop-filter: blur(3px);
         left: 0;
@@ -4287,7 +4314,7 @@ header {
         border-radius: 50px;
     }
     .steps-btn-holder .site-btn {
-        padding: 10px 9px 10px 16px;
+        padding: 8px 8px 8px 16px;
     }
     .select-btn span {
         font-size: 12px;
@@ -4298,9 +4325,9 @@ header {
     }
     .select-btn-holder {
         padding-bottom: 60px;
-        row-gap: 25px;
-        -moz-column-gap: 25px;
-        column-gap: 25px;
+        row-gap: 20px;
+        -moz-column-gap: 20px;
+        column-gap: 250x;
     }
     .page-title {
         font-size: 26px;
@@ -4379,6 +4406,13 @@ header {
     font-size: 10px;
 }
 
+.book-instructions ul li svg {
+    max-width: 11px;
+    max-height: 11px;
+    width: 11px;
+    height: 11px
+}
+
 @media only screen and (max-width: 500px) {
     .result-action-btn p {
         font-size: 11px;
@@ -4388,7 +4422,61 @@ header {
         gap: 5px;
     }
     .suggest-mov-btn {
-        padding: 10px 8px;
+        padding: 10px 7px;
+        font-size: 14px;
+        width: 100%;
+        justify-content: center;
+    }
+    .book-instructions ul li {
         font-size: 10px;
+    }
+    .book-instructions {
+        padding: 10px;
+    }
+    .book-instructions ul li span {
+        width: 18px;
+        height: 18px;
+        background-color: #00BDFF;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 400;
+    }
+    .main-book-mark {
+        width: 100%;
+    }
+    .page-title {
+        font-size: 18px;
+        line-height: inherit;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .type-field input {
+        font-size: 12px;
+        padding: 10px;
+        width: 100%;
+    }
+    .type-field input::placeholder {
+        font-size: 10px;
+    }
+    .select-btn-holder {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .site-btn {
+        padding: 14px 20px !important;
+    }
+}
+
+@media only screen and (max-width: 370px) {
+    .book-instructions ul li {
+        font-size: 8px;
+    }
+    .book-instructions ul li span {
+        width: 16px;
+        height: 16px;
+        font-size: 8px;
     }
 }

@@ -45,9 +45,21 @@ const Result = () => {
 
     return (
         <>
-            <div className={`modal-bring ${foundModal ? 'bring' : ''}`}>
-                <FoundModal closeModal={onCloseFoundModal} />
-            </div>
+        {foundModal && 
+        <>
+           <style>
+          {`
+            body {
+              overflow: hidden;
+            }
+           
+          `}
+        </style>
+        </>
+        }
+          
+                <FoundModal showCondition={`modal-bring ${foundModal ? 'bring' : ''}`} closeModal={onCloseFoundModal} />
+            
 
             <div className={`modal-bring ${moodModal ? 'bring' : ''}`}>
                 <MoodModal closeModal={onCloseMoodModal} />
@@ -101,7 +113,7 @@ const Result = () => {
                 </div>
 
                 <div className="flex flex-col gap-3 mt-[50px]">
-                    <h3 className='text-[24px] text-center font-[400] text-[white] anton'>Did you find something to watch?</h3>
+                    <h3 className='text-[24px] text-center font-[400] text-[white] anton mb-5'>Did you find something to watch?</h3>
                     <button onClick={() => {
                         setFoundModal(true)
                     }} type="button" class=" site-btn mx-auto text-center w-fit "><span>Yes, I found something! 😀</span></button>
