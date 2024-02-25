@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef  } from 'react';
 
 import { useCallback } from "react";
 import Movimg from '../assets/images/card-img.png'
@@ -9,22 +9,43 @@ import CardImg5 from '../assets/images/card-img5.jpg'
 import CardImg6 from '../assets/images/card-img6.jpg'
 import CardImg7 from '../assets/images/card-img7.jpg'
 
-const FoundModal = ({ closeModal }) => {
+const FoundModal = ({ closeModal, showCondition }) => {
 
 
     const [shareModal, setShareModal] = useState(false);
 
+    const [selectedCard, setSelectedCard] = useState(null);
+
+    const handleCardClick = useCallback((title) => {
+        setSelectedCard(title);
+      }, []);
 
     const onCloseShareModal = useCallback(() => {
         setShareModal(false);
+        setSelectedCard(false)
     }, [shareModal]);
     return (
-        <div className="main-modal-container">
+        <>
+
+{shareModal && 
+        <>
+           <style>
+          {`
+            .main-modal-container {
+              overflow-y: auto !important;
+            }
+           
+          `}
+        </style>
+        </>
+        }
+        <div className={`${showCondition} main-modal-container found-modal-container`}>
             <div onClick={() => {
                 setShareModal(false)
+                setSelectedCard(false)
                 closeModal()
             }} className="modal-outer"></div>
-            <div className="modal-content-box">
+            <div className="modal-content-box modal-found-content">
                 <button onClick={() => {
                 setShareModal(false)
                 closeModal()
@@ -40,28 +61,28 @@ const FoundModal = ({ closeModal }) => {
                             setShareModal(true)
                         }}
                     >
-                        <WillWatchCards movTitle='Westworld' movImg={CardImg4} />
+                        <WillWatchCards movTitle='Westworld' movImg={CardImg4} onClick={handleCardClick} selected={selectedCard === 'Westworld'} />
                     </div>
                     <div
                     onClick={() => {
                         setShareModal(true)
                     }}
                     >
-                        <WillWatchCards movTitle='Game of Thrones' movImg={CardImg5} />
+                        <WillWatchCards movTitle='Game of Thrones' movImg={CardImg5} onClick={handleCardClick} selected={selectedCard === 'Game of Thrones'} />
                     </div>
                     <div
                     onClick={() => {
                         setShareModal(true)
                     }}
                     >
-                        <WillWatchCards movTitle='Inglorious Basterds' movImg={CardImg6} />
+                        <WillWatchCards movTitle='Inglorious Basterds' movImg={CardImg6} onClick={handleCardClick} selected={selectedCard === 'Inglorious Basterds'} />
                     </div>
                     <div
                     onClick={() => {
                         setShareModal(true)
                     }}
                     >
-                        <WillWatchCards movTitle='Game of Thrones' movImg={CardImg7} />
+                        <WillWatchCards movTitle='Matrix' movImg={CardImg7} onClick={handleCardClick} selected={selectedCard === 'Matrix'} />
                     </div>
 
                 </div>
@@ -70,6 +91,7 @@ const FoundModal = ({ closeModal }) => {
                 <ShareModal closeModal={onCloseShareModal} />
             </div>
         </div>
+        </>
 
     )
 }
